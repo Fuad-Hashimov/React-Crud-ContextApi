@@ -1,36 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
+import { EmployeeContext } from "../context/EmployeeContext";
 
-const Employee = ({ employess }) => {
+const Employee = ({ employee }) => {
+  const { removeEmployee } = useContext(EmployeeContext);
+
   return (
     <>
-      {employess.map((employee) => (
-        <tr key={employee.id}>
-          <td>{employee.name}</td>
-          <td>{employee.email}</td>
-          <td>{employee.address}</td>
-          <td>{employee.phone}</td>
-          <td>
-            <a href="#editEmployeeModal" className="edit" data-toggle="modal">
-              <i className="material-icons" data-toggle="tooltip" title="Edit">
-                &#xE254;
-              </i>
-            </a>
-            <a
-              href="#deleteEmployeeModal"
-              className="delete"
-              data-toggle="modal"
-            >
-              <i
-                className="material-icons"
-                data-toggle="tooltip"
-                title="Delete"
-              >
-                &#xE872;
-              </i>
-            </a>
-          </td>
-        </tr>
-      ))}
+      <td>{employee.name}</td>
+      <td>{employee.email}</td>
+      <td>{employee.address}</td>
+      <td>{employee.phone}</td>
+      <td>
+        <button className="btn text-warning" data-toggle="modal">
+          <i className="material-icons" data-toggle="tooltip" title="Edit">
+            &#xE254;
+          </i>
+        </button>
+        <button
+          onClick={() => removeEmployee(employee.id)}
+          className="btn text-danger"
+        >
+          <i className="material-icons" data-toggle="tooltip" title="Delete">
+            &#xE872;
+          </i>
+        </button>
+      </td>
     </>
   );
 };

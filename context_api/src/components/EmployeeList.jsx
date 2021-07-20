@@ -46,7 +46,13 @@ const EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          <Employee employess={employess} />
+          {
+            employess.map(employee => (
+              <tr key={employee.id}>
+                <Employee employee={employee} />
+              </tr>
+            ))
+          }
         </tbody>
       </table>
       <ModalForm show={show} handleClose={handleClose} />
