@@ -4,7 +4,7 @@ import AddForm from "./AddForm";
 
 const ModalForm = ({ show, handleClose }) => {
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show}>
       <Modal.Header>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
