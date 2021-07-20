@@ -1,14 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Employee from "./Employee";
 import { EmployeeContext } from "../context/EmployeeContext";
 import { Button } from "react-bootstrap";
-import ModalForm from './ModalForm';
+import ModalForm from "./ModalForm";
 
 const EmployeeList = () => {
   const { employess } = useContext(EmployeeContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    handleClose();
+  }, [employess]);
+
   return (
     <>
       <div className="table-title">
